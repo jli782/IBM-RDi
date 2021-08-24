@@ -1,0 +1,98 @@
+000100210618             PGM
+000101210618             /* declare display file */
+000102210618             DCLF       LAB4DSP
+000103210618             /* declare internal variables for pgm */
+000104210618             DCL        &MSGQ *Char 10
+000105210618             DCL        &MSGQL *Char 10
+000106210618             DCL        &MaxSignOn *CHAR 6
+000107210618             DCL        &RTNUSRPRF *CHAR 10
+000108210618             DCL        &PRVSIGN *CHAR 13
+000109210618             DCL        &DATE *CHAR 8
+000110210618             DCL        &TIME *CHAR 8
+000111210618             DCL        &SYSLVL *CHAR 9
+000112210624/*              DCL        VAR(&SEED)   TYPE(*CHAR) LEN(10) VALUE('433')                          */
+000113210618
+000114210624/*              if         (&IN21 *NE '1')                                                        */
+000115210624/*              do                                                                                */
+000116210624/*                 chgvar     &seed 'metal gear'                                                  */
+000117210624/*              enddo                                                                             */
+000118210624
+000119210624/*              select                                                                            */
+000120210624/*                 when       cond(&seed *eq '433') then(do)                                      */
+000121210624/*                    SNDMSG     MSG('Good Afternoon')  TOUSR(DC433B16)                           */
+000123210624/*                    chgvar     &seed 'hello'                                                    */
+000124210624/*                 enddo                                                                          */
+000125210624/*                                                                                                */
+000126210624/*              endselect                                                                         */
+000127210624
+000128210624/*              CHGVAR     &SEED 'SEED'                                                           */
+000129210618             SNDRCVF
+000130210618/*           DOWHILE    (&IN03 = '0') */
+000131210618             DOWHILE    (&IN03 *EQ '0')
+000132210618
+000133210618                CALLSUBR   CLEAR
+000134210618                SELECT
+000135210624                   WHEN       &IN21 CALL QUSCMDLN
+000136210618                   WHEN       (&OPTION = '1' *OR &OPTION = '01')    CALLSUBR   OPTION1
+000137210618                   WHEN       (&OPTION = '2' *OR &OPTION = '02')    CALLSUBR   OPTION2
+000138210618                   WHEN       (&OPTION = '3' *OR &OPTION = '03')    CALLSUBR   OPTION3
+000139210618                   WHEN       (&OPTION = '4' *OR &OPTION = '04')    CALLSUBR   OPTION4
+000140210618                   WHEN       (&OPTION = '5' *OR &OPTION = '05')    CALLSUBR   OPTION5
+000141210618                   OTHERWISE  CHGVAR &IN30 '1'
+000142210618                ENDSELECT
+000143210618
+000144210618                SNDRCVF
+000145210618             ENDDO
+000146210618
+000147210618             /********* SUBROUTINES *********/
+000148210618             subr       clear
+000149210618                CHGVAR     &IN30 '0'
+000150210618                CHGVAR     &MSGTXT1 ' '
+000151210618                CHGVAR     &MSGTXT2 ' '
+000152210618             endsubr
+000153210618
+000154210618             SUBR       OPTION1
+000155210618                RTVUSRPRF  MSGQ(&MSGQ) MSGQLIB(&MSGQL)
+000156210618                CHGVAR     &MSGTXT1 ('Signed on User''s message queue is ' *CAT &MSGQL *TCAT +
+000157210618                             '/' *CAT &MSGQ)
+000158210618                CHGVAR     VAR(&MSGTXT2) VALUE('CLLE Programs can report on and manage the +
+000159210618                             users on the system')
+000160210618             ENDSUBR
+000161210618
+000162210618
+000163210618             SUBR       OPTION2
+000164210618                CALL       COVIDRPGB
+000165210618                CHGVAR     &MSGTXT1 ('The students COVIDRPG RPGLE program was run')
+000166210618                CHGVAR     &MSGTXT2 ('CLLE Programs can manage how an RPGLE Business +
+000167210618                             Application is run')
+000168210618             ENDSUBR
+000169210618
+000170210618
+000171210618             SUBR       OPTION3
+000172210618                RTVSYSVAL  SYSVAL(QMAXSIGN) RTNVAR(&MaxSignOn)
+000173210618                CHGVAR     &MSGTXT1 ('Maximum invalid signons allowed: ' *CAT &MaxSignOn *TCAT +
+000174210618                             '(tries)')
+000175210618                CHGVAR     &MSGTXT2 ('CLLE Programs can manage how an RPGLE Business +
+000176210618                             Application is run')
+000177210618             ENDSUBR
+000178210618
+000179210618             SUBR       OPTION4
+000180210618                RTVUSRPRF  RTNUSRPRF(&RTNUSRPRF) PRVSIGN(&PRVSIGN)
+000181210618                CHGVAR     &DATE (%SST(&PRVSIGN 4 2) *CAT '/' *CAT %SST(&PRVSIGN 6 2) *CAT '/' +
+000182210618                             *CAT %SST(&PRVSIGN 2 2))
+000183210618                CHGVAR     &TIME (%SST(&PRVSIGN 8 2) *CAT ':' *CAT %SST(&PRVSIGN 10 2) *CAT +
+000184210618                             ':' *CAT %SST(&PRVSIGN 12 2))
+000185210618                CHGVAR     &MSGTXT1 ('Previous sign on for user ' *BCAT &RTNUSRPRF *BCAT 'was +
+000186210618                             on ' *CAT &DATE *BCAT &TIME)
+000187210618                CHGVAR     VAR(&MSGTXT2) VALUE('CLLE Programs can report on and manage the +
+000188210618                             users on the system')
+000189210618             ENDSUBR
+000190210618
+000191210618             SUBR       OPTION5
+000192210618                RTVOBJD    OBJ(QSYS/QCMD) OBJTYPE(*PGM) SYSLVL(&SYSLVL)
+000193210618                CHGVAR     &MSGTXT1 ('The system level of the operating system is ' *BCAT +
+000194210618                             &SYSLVL)
+000195210618                CHGVAR     &MSGTXT2 ('CLLE Programs can report on system information')
+000196210618             ENDSUBR
+000197210618
+000198210618             ENDPGM

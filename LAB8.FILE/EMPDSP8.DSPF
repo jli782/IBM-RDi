@@ -1,0 +1,62 @@
+000001210723     A          R RECORD1
+000002210723     A                                  1  3USER
+000003210723     A                                  1 22'E m p l o y e e  I n f o r m a t i-
+000004210723     A                                       o n'
+000005210723     A                                  1 69DATE
+000006210723     A                                      EDTCDE(Y)
+000007210729     A                                  3  3'Enter Employee Number:'
+000008210729     A            DEMPNUM        9N 0B  3 26
+000009210729     A  95                                  DSPATR(PR)
+000010210729     A  90                                  DSPATR(PC)
+000011210729     A  90        ERRORMSG      40   O  3 39
+000012210729     A          R RECORD2                   CF03(03 'Exit Program')
+000013210729     A                                      CF06(06 'Update Employee Record')
+000014210729     A                                      OVERLAY
+000015210729     A                                  5 28'Employee Data'
+000016210729     A                                  7  5'First Name:'
+000017210729     A            DFIRSTNAMER           7 18REFFLD(EMPLOYEE/FIRSTNAME +
+000018210729     A                                      SENECAPAY/EMPLOYEE)
+000019210729     A                                  8  5'Last Name:'
+000020210729     A            DLASTNAME R           8 18REFFLD(EMPLOYEE/LASTNAME +
+000021210729     A                                      SENECAPAY/EMPLOYEE)
+000022210729     A                                  8 47'City:'
+000023210729     A            DCITY     R        B  8 58REFFLD(EMPLOYEE/CITY SENECAPAY/EMPL-
+000024210729     A                                      OYEE)
+000025210729     A                                      CHECK(LC)
+000026210729     A                                  9  5'Phone:'
+000027210729     A            DPHONE    R           9 18REFFLD(EMPLOYEE/PHONE SENECAPAY/EMP-
+000028210729     A                                      LOYEE)
+000029210729     A                                      EDTWRD('0(   )&   -    ')
+000030210729     A                                  9 47'Address:'
+000031210729     A            DADDRESS  R        B  9 58REFFLD(EMPLOYEE/ADDRESS SENECAPAY/E-
+000032210729     A                                      MPLOYEE)
+000033210729     A                                      CHECK(LC)
+000034210729     A                                 11  5'Year To Date Pay:'
+000035210729     A            DYTDPAY   R          11 25REFFLD(EMPLOYEE/YTDPAY SENECAPAY/EM-
+000036210729     A                                      PLOYEE)
+000037210729     A                                      EDTCDE(1)
+000038210729     A                                 13 28'Last Shift Worked'
+000039210729     A                                 15  4'Shift:'
+000040210729     A            DSHIFT        10     15 20
+000041210729     A                                 15 41'Regular Pay:'
+000042210729     A            REGPAY         7  2  15 57EDTCDE(1)
+000043210729     A                                 16  4'Hours Worked:'
+000044210729     A            HRSWRKED       3Y 0  16 20EDTCDE(1)
+000045210729     A                                 16 41'Overtime Pay:'
+000046210729     A            OVRPAY         7Y 2  16 57EDTCDE(1)
+000047210729     A                                 17  4'Pay Grade:'
+000048210729     A            NWPAYGRADER        B 17 20REFFLD(EMPLOYEE/PAYGRADE +
+000049210729     A                                      SENECAPAY/EMPLOYEE)
+000050210729     A                                      VALUES('1' '2' '3' '4')
+000051210729     A                                 17 41'Shift Pay:'
+000052210729     A            SHFTPAY        7Y 2O 17 57EDTCDE(1)
+000053210729     A                                 19  5'F3 - Exit'
+000054210729     A                                 19 21'F6 - Update Employee Record'
+000100      
+000101210729     A*%%RS+<record-sequences>
+000102210729     A*%%RS+ <sequence name="Untitled">
+000103210729     A*%%RS+  <device type="display" width="80" height="24" />
+000104210729     A*%%RS+  <record-write record-format="RECORD1" />
+000105210729     A*%%RS+  <record-write record-format="RECORD2" />
+000106210729     A*%%RS+ </sequence>
+000107210729     A*%%RS </record-sequences>

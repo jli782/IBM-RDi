@@ -1,0 +1,22 @@
+000100210527     /****************************/                                                                 
+000200210527     /* JEFFREY LI 160203196     */                                                                 
+000300210527     /* LAB 2                    */                                                                 
+000400210527     /* INSTRUCTOR: I. KARASIK   */                                                                 
+000500210527     /* MAY 27, 2021             */                                                                 
+000600210527     /* SIGNED: J LI             */                                                                 
+000700210527     /****************************/                                                                 
+000800210527     A                                      UNIQUE                                                  
+000900210527     A          R STUDENTSR                 TEXT('STUDENTS REGISTER')                               
+001000210527     A            STUDENTNO      9S 0       COLHDG('STUDENT' 'NUMBER')                              
+001100210527     A            FIRSTNAME     15          COLHDG('FIRST NAME')                                    
+001200210527     A            LASTNAME      20          COLHDG('LAST NAME')                                     
+001300210527     A            BIRTHDATE       L                                                                 
+001400210527     A            PHONE         10S 0       COLHDG('PHONE' 'NUMBER')                                
+001500210527     A            ADDRESS       30          COLHDG('STREET' 'ADDRESS')                              
+001600210527     A            CITY          15                                                                  
+001700210527     A            PROVINCE       2          COLHDG('PROV' 'CODE')                                   
+001800210527     A                                                                                              
+001900210527     A            POSTALCODE     6          COLHDG('POSTAL' 'CODE')                                 
+002000210527     A            FEESOWED       7P 2       COLHDG('FEES' 'OWED')                                   
+002100210527     A            FINESOWED      7P 2       COLHDG('FINES' 'OWED')                                  
+002200210527     A          K STUDENTNO                                                                         

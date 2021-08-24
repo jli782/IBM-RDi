@@ -1,0 +1,62 @@
+000001210605     A          R RISKFACTOR
+000002210610     A                                  1  2USER
+000003210610     A                                  1 21'C O V I D 1 9   R I S K   F A C T -
+000004210610     A                                      O R S '
+000005210605     A                                  1 72DATE
+000006210605     A                                      EDTCDE(Y)
+000007210605     A                                  2  2'JEFFREY''S PROGRAM'
+000008210605     A                                  4  4'Birth Date:'
+000009210610     A            BIRTHDATE       L  B  4 17
+000010210610     A  60                                  DSPATR(PR)
+000011210605     A                                  4 35'Gender:'
+000012210610     A            GENDER         1   B  4 45VALUES('M' 'F')
+000013210610     A  95                                  DSPATR(RI PC)
+000014210610     A  60                                  DSPATR(PR)
+000015210610     A                                  4 48'M/F'
+000016210610     A  95                              4 54'Gender Must Not Be Blank'
+000017210610     A                                  6  4'Answer the Following with Y or N:'
+000018210605     A                                  7  4'Cardiovascular Disease:'
+000019210610     A            CVDISEASE      1   B  7 28VALUES('Y' 'N')
+000020210610     A  96                                  DSPATR(RI PC)
+000021210610     A  60                                  DSPATR(PR)
+000022210605     A                                  7 46'Diabetes:'
+000023210610     A            DIABETES       1   B  7 58VALUES('Y' 'N')
+000024210610     A  97                                  DSPATR(RI PC)
+000025210610     A  60                                  DSPATR(PR)
+000026210610     A  96                              8  4'Cardiovascular Must Not Be Blank'
+000027210610     A  97                              8 46'Diabetes Must Not Be Blank'
+000028210605     A                                  9  4'Respiratory Disease:'
+000029210610     A            RSPDISEASE     1   B  9 27VALUES('Y' 'N')
+000030210610     A  98                                  DSPATR(RI PC)
+000031210610     A  60                                  DSPATR(PR)
+000032210605     A                                  9 36'High Blood Pressure:'
+000033210610     A            HBPRESSURE     1   B  9 58VALUES('Y' 'N')
+000034210610     A  99                                  DSPATR(RI PC)
+000035210610     A  60                                  DSPATR(PR)
+000037210605     A  98                             10  4'Respiratory Must Not Be Blank'
+000043210605     A  99                             10 36'High Blood Pressure Must Not Be Bl-
+000044210605     A                                      ank'
+000045210605     A          R RISKASSMNT                CF03(03 'Exit Program')
+000046210605     A                                      OVERLAY
+000047210609     A                                      CF01(01 'Cohort Information')
+000048210606     A                                 13 26'R I S K   A S S E S S M E N T'
+000049210606     A                                 15  4'Age'
+000050210606     A            AGE            3Y 0O 17  4EDTCDE(1)
+000051210606     A                                 15 12'Fatality Rate'
+000052210606     A            FRATE          5  3O 17 16EDTCDE(1)
+000053210606     A                                 17 24'%'
+000054210606     A                                 15 33'Vaccination Recommendation'
+000055210606     A                                 17 35'Cohort:'
+000056210606     A            COHORT         9   O 17 43
+000057210606     A                                 15 64'Total Queries:'
+000058210606     A            TOTALQ         3Y 0O 17 69EDTCDE(1)
+000059210606     A                                 19  6'F1 - Cohort Information'
+000060210606     A                                 19 36'F3 - Exit'
+000100      
+000101210606     A*%%RS+<record-sequences>
+000102210606     A*%%RS+ <sequence name="Untitled">
+000103210606     A*%%RS+  <device type="display" width="80" height="24" />
+000104210606     A*%%RS+  <record-write record-format="RISKFACTOR" />
+000105210606     A*%%RS+  <record-write record-format="RISKASSMNT" />
+000106210606     A*%%RS+ </sequence>
+000107210606     A*%%RS </record-sequences>

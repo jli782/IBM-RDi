@@ -1,0 +1,28 @@
+000001210628     A          R RECORD1
+000002210628     A                                  1 28'SENECA Payroll Program'
+000003210628     A                                  2  5'Jeffrey Li'
+000004210628     A                                  1 65DATE
+000005210628     A                                      EDTCDE(Y)
+000006210628     A                                  2 65TIME
+000007210628     A                                  3 12'Rates:'
+000008210628     A                                  7 12'Totals:'
+000009210628     A                                  4 21'Day Hours:'
+000010210628     A                                  5 21'Afternoon Hours:'
+000011210628     A                                  6 21'Night Hours:'
+000012210628     A                                  8 21'Regular Pay:'
+000013210628     A                                  9 21'Overtime Pay:'
+000014210628     A                                 10 21'Company Payout:'
+000015210628     A            DAYHRS    R        O  4 42REFFLD(SHIFTRATES/DAYHRS +
+000016210628     A                                      SENECAPAY/SHIFTRATES)
+000017210628     A                                      EDTCDE(1)
+000018210628     A            NIGHTHRS  R        O  6 42REFFLD(SHIFTRATES/NIGHTHRS +
+000019210628     A                                      SENECAPAY/SHIFTRATES)
+000020210628     A                                      EDTCDE(1)
+000021210628     A            AFTHRS    R        O  5 42REFFLD(SHIFTRATES/AFTHRS +
+000022210628     A                                      SENECAPAY/SHIFTRATES)
+000023210628     A                                      EDTCDE(1)
+000024210628     A            TOTREGPAY      9  2O  8 43EDTCDE(1)
+000025210628     A            TOTOVTPAY      9  2O  9 43EDTCDE(1)
+000026210628     A            TOTWKPAY       9Y 2O 10 42EDTCDE(1 $)
+000027210628     A                                  1  5USER
+000100      
